@@ -47,3 +47,10 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 #
 source $HOME/.aliases
+
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_REPSECT_VIRTUALENV=true
+
