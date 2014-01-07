@@ -1,2 +1,11 @@
+# system aliases
 alias l="ls -lF"
 alias ll="ls -lAF"
+alias gg="grep -rnI"
+alias gpy="gg --include='*.py'"
+# Django/Celery aliases
+alias cj="celery worker -A jobdash -B -E"
+alias cjq="celery worker -A jobdash -B -E --loglevel=INFO"
+alias runserver="python manage.py runserver"
+alias djsh="python manage.py shell"
+alias djsync="python manage.py syncdb --migrate"
