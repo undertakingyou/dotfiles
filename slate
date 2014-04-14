@@ -14,10 +14,8 @@ alias mon-cinema2     2
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
-alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
-alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
-alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
-alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias topright move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
+alias bottomright move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2
 
 
 # ======================================
@@ -38,12 +36,15 @@ bind up:ctrl;alt     resize +0   +10% bottom-right
 bind down:ctrl;alt   resize +0   -10% bottom-right
 
 # Push Bindings
-bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
-bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
+bind right:ctrl;cmd  push right bar-resize:screenSizeX/2
+bind left:ctrl;cmd   push left  bar-resize:screenSizeX/2
 bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
 bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
-bind right:ctrl;alt;cmd push right bar-resize:screenSizeX/2
-bind left:ctrl;alt;cmd push left bar-resize:screenSizeX/2
+bind right:ctrl;alt;cmd push right bar-resize:screenSizeX/3
+bind left:ctrl;alt;cmd push left bar-resize:screenSizeX/3
+bind up:ctrl;alt;cmd ${topright}
+bind down:ctrl;alt;cmd ${bottomright}
+
 
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0
@@ -55,17 +56,7 @@ bind down:shift;alt  nudge +0   +10%
 bind right:${hyper} throw right resize
 bind left:${hyper}  throw left  resize
 
-
-# Focus Bindings
-#bind right:cmd    focus right
-#bind left:cmd     focus left
-#bind up:cmd       focus up
-#bind down:cmd     focus down
-#bind up:cmd;alt   focus behind
-#bind down:cmd;alt focus behind
-
 # Window Hints
 bind esc:cmd hint
 
 bind tab:alt switch
-
