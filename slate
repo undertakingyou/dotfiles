@@ -5,57 +5,64 @@ config resizePercentOf screenSize
 config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
+
+# #############
+# Key alises
+# #############
+alias action ctrl;cmd
+alias super  ctrl;alt;cmd
+alias hyper  ctrl;shift;alt;cmd
+
+# ###############
 # Monitor Aliases
+#################
 alias mon-laptop      0
 alias mon-cinema1     1
 alias mon-cinema2     2
 
+# ##################
 # Abstract positions
-alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
-alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
-alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
-alias topright move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
-alias bottomright move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2
+####################
+# sides
+alias full          move screenOriginX;screenOriginY                 screenSizeX;screenSizeY
+alias lefthalf      move screenOriginX;screenOriginY                 screenSizeX/2;screenSizeY
+alias leftthird     move screenOriginX;screenOriginY                 screenSizeX/3;screenSizeY
+alias lefttwothird  move screenOriginX;screenOriginY                 2*screenSizeX/3;screenSizeY
+alias righthalf     move screenOriginX+screenSizeX/2;screenOriginY   screenSizeX/2;screenSizeY
+alias rightthird    move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+alias righttwothird move screenOriginX+screenSizeX/3;screenOriginY   2*screenSizeX/3;screenSizeY
 
+# corners
+alias topright    move screenOriginX+screenSizeX/2;screenOriginY                screenSizeX/2;screenSizeY/2
+alias bottomright move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2  screenSizeX/2;screenSizeY/2
+alias topleft     move screenOriginX;screenOriginY                              screenSizeX/2;screenSizeY/2
+alias bottomleft  move screenOriginX;screenOriginY+screenSizeY/2                screenSizeX/2;screenSizeY/2
 
-# ======================================
-# The HYPER key
-# ======================================
+# concrete positions
+alias 0-full ${full} ${mon-laptop}
+alias 1-full ${full} ${mon-cinema1}
+alias 2-full ${full} ${mon-cinema2}
 
-alias hyper ctrl;shift;alt;cmd
-alias super ctrl;alt;cmd
 
 # Resize Bindings
 bind right:alt       resize +10% +0
-bind left:alt        resize -10% +0
-bind up:alt          resize +0   -10%
-bind down:alt        resize +0   +10%
 bind right:ctrl;alt  resize -10% +0 bottom-right
+bind left:alt        resize -10% +0
 bind left:ctrl;alt   resize +10% +0 bottom-right
-bind up:ctrl;alt     resize +0   +10% bottom-right
-bind down:ctrl;alt   resize +0   -10% bottom-right
 
-# Push Bindings
-bind right:ctrl;cmd  push right bar-resize:screenSizeX/2
-bind left:ctrl;cmd   push left  bar-resize:screenSizeX/2
-bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
-bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
-bind right:ctrl;alt;cmd push right bar-resize:screenSizeX/3
-bind left:ctrl;alt;cmd push left bar-resize:screenSizeX/3
-bind up:ctrl;alt;cmd ${topright}
-bind down:ctrl;alt;cmd ${bottomright}
-
+# Move-Resize bindings
+bind 1:ctrl chain ${full} | ${0-full} | ${1-full} | ${2-full}
+bind 1:ctrl,cmd chain ${0-full} | ${1-full} | ${2-full}
+bind 2:ctrl chain ${lefthalf} | ${leftthird} | ${righthalf} | ${rightthird}
+bind 2:ctrl,cmd chain ${lefttwothird} | ${righttwothird}
+bind 3:ctrl chain ${topright} | ${bottomright} | ${bottomleft} | ${topleft}
 
 # Nudge Bindings
-bind right:shift;alt nudge +10% +0
-bind left:shift;alt  nudge -10% +0
-bind up:shift;alt    nudge +0   -10%
-bind down:shift;alt  nudge +0   +10%
+bind right:${action} nudge +10% +0
+bind left:${action}  nudge -10% +0
 
 # Throw Bindings
-bind right:${hyper} throw right resize
-bind left:${hyper}  throw left  resize
-
+bind 0:${hyper} chain throw ${mon-laptop} | throw ${mon-cinema1} | throw ${mon-cinema2}
 # Window Hints
 bind esc:cmd hint
 
