@@ -22,7 +22,7 @@ alias mon-cinema2     2
 
 # ##################
 # Abstract positions
-####################
+# ##################
 # sides
 alias full          move screenOriginX;screenOriginY                 screenSizeX;screenSizeY
 alias lefthalf      move screenOriginX;screenOriginY                 screenSizeX/2;screenSizeY
@@ -38,11 +38,16 @@ alias bottomright move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2  
 alias topleft     move screenOriginX;screenOriginY                              screenSizeX/2;screenSizeY/2
 alias bottomleft  move screenOriginX;screenOriginY+screenSizeY/2                screenSizeX/2;screenSizeY/2
 
+# ##################
 # concrete positions
+# ##################
 alias 0-full ${full} ${mon-laptop}
 alias 1-full ${full} ${mon-cinema1}
 alias 2-full ${full} ${mon-cinema2}
 
+# ################
+# Window movements
+# ################
 
 # Resize Bindings
 bind right:alt       resize +10% +0
@@ -66,4 +71,9 @@ bind 0:${hyper} chain throw ${mon-laptop} | throw ${mon-cinema1} | throw ${mon-c
 # Window Hints
 bind esc:cmd hint
 
+# #############
+# App switching
+# #############
+bind t:ctrl,alt focus 'iTerm'
+bind s:ctrl,alt chain focus 'Sublime Text' | focus 'Slack'
 bind tab:alt switch
