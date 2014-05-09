@@ -54,6 +54,10 @@ fi
 
 export PATH=/usr/local/bin:$PATH
 
+# Set up my go installation
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
