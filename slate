@@ -76,4 +76,4 @@ bind esc:cmd hint
 # #############
 bind t:ctrl,alt focus 'iTerm'
 bind s:ctrl,alt chain focus 'Sublime Text' | focus 'Slack'
-bind tab:alt switch
+bind tab:cmd switch

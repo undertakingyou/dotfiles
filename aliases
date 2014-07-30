@@ -9,3 +9,7 @@ alias cjq="celery worker -A jobdash -B -E --loglevel=INFO"
 alias runserver="python manage.py runserver"
 alias djsh="python manage.py shell"
 alias djsync="python manage.py syncdb --migrate"
+# Postgres helpers
+alias pslog='sudo tail -F /var/log/postgresql/postgresql-9.1-main.log'
+alias psqlstart='sudo /etc/init.d/postgresql start'
+alias psqlstop='sudo /etc/init.d/postgresql stop'
