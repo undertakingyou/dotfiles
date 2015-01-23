@@ -50,15 +50,15 @@ alias 2-full ${full} ${mon-cinema2}
 # ################
 
 # Resize Bindings
-bind right:alt       resize +10% +0
-bind right:ctrl;alt  resize -10% +0 bottom-right
-bind left:alt        resize -10% +0
-bind left:ctrl;alt   resize +10% +0 bottom-right
+bind right:alt;cmd       resize +10% +0
+bind right:alt;shift;cmd  resize -10% +0 bottom-right
+bind left:alt;cmd        resize -10% +0
+bind left:alt;shift;cmd   resize +10% +0 bottom-right
 
 # Move-Resize bindings
 bind 1:ctrl chain ${full} | ${0-full} | ${1-full} | ${2-full}
 bind 1:ctrl,cmd chain ${0-full} | ${1-full} | ${2-full}
-bind 2:ctrl chain ${lefthalf} | ${leftthird} | ${righthalf} | ${rightthird}
+bind 2:ctrl chain ${lefthalf} | ${righthalf} 
 bind 2:ctrl,cmd chain ${lefttwothird} | ${righttwothird}
 bind 3:ctrl chain ${topright} | ${bottomright} | ${bottomleft} | ${topleft}
 
@@ -74,6 +74,4 @@ bind esc:cmd hint
 # #############
 # App switching
 # #############
-bind t:ctrl,alt focus 'iTerm'
-bind s:ctrl,alt chain focus 'Sublime Text' | focus 'Slack'
 bind tab:cmd switch
