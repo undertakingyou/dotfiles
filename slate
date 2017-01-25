@@ -33,10 +33,10 @@ alias rightthird    move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX
 alias righttwothird move screenOriginX+screenSizeX/3;screenOriginY   2*screenSizeX/3;screenSizeY
 
 # corners
-alias topright    move screenOriginX+screenSizeX/2;screenOriginY                screenSizeX/2;screenSizeY/2
-alias bottomright move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2  screenSizeX/2;screenSizeY/2
-alias topleft     move screenOriginX;screenOriginY                              screenSizeX/2;screenSizeY/2
-alias bottomleft  move screenOriginX;screenOriginY+screenSizeY/2                screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
 
 # ##################
 # concrete positions
@@ -58,7 +58,7 @@ bind left:alt;shift;cmd   resize +10% +0 bottom-right
 # Move-Resize bindings
 bind 1:ctrl chain ${full} | ${0-full} | ${1-full} | ${2-full}
 bind 1:ctrl,cmd chain ${0-full} | ${1-full} | ${2-full}
-bind 2:ctrl chain ${lefthalf} | ${righthalf} 
+bind 2:ctrl chain ${lefthalf} | ${righthalf}
 bind 2:ctrl,cmd chain ${lefttwothird} | ${righttwothird}
 bind 3:ctrl chain ${topright} | ${bottomright} | ${bottomleft} | ${topleft}
 

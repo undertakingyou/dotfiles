@@ -1,0 +1,121 @@
+# This is Git's per-user configuration file.
+[core]
+# Please adapt and uncomment the following lines:
+    user = Lucas Roesler
+    email = lucas@enderlabs.com
+[user]
+    name = Lucas Roesler
+    email = lucas@enderlabs.com
+[push]
+    default = simple
+[alias]
+    # common operations
+    cp = cherry-pick
+    ci = commit
+    co = checkout
+    br = branch
+    undo-commit = reset --soft HEAD~1
+
+    # sort branches by last update
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # log as a graph
+    graph = log --graph --oneline --decorate --all
+
+    # one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    # one-line log with list of files changed
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+    # set the upstream
+    sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
+
+    # cleanup old branches
+    audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
+    clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
+
+    # squash the currently staged files into the previous commit
+    # note that if you have already pushed the branch, you will probably
+    # need to push with `git push -f`
+    fixup = "!git commit --amend"
+
+    # Thin out older metadata within the repository, reduceses filesystem footprint
+    trim = !git reflog expire --expire=now --all && git gc --prune=now
+
+    # list git aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+[diff]
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+    mnemonicPrefix = true
+[rerere]
+    enabled = 1
+    autoupdate = 1
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[commit]
+    template = ~/.gitmessage
+[rebase]
+	autosquash = true
+[diff]
+	compactionHeuristic = true
+[log]
+    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+    abbrevCommit = true
+[url "https://github.com/"]
+    insteadOf = gh:
+[url "https://gist.github.com/"]
+    insteadOf = gist:
+
+[color]
+  pager = true
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  showBranch = auto
+  interactive = auto
+  grep = auto
+[color "status"]
+  header = black bold
+  branch = cyan
+  nobranch = red
+  unmerged = red
+  untracked = cyan
+  added = cyan
+  changed = red
+[color "diff"]
+  meta = red bold
+  frag = black bold
+  func = blue
+  old = red
+  new = cyan
+  commit = blue
+  whitespace = red
+  context = normal
+[color "branch"]
+  current = cyan
+  local = blue
+  remote = magenta
+  upstream = magenta
+  plain = normal
+[color "decorate"]
+  branch = blue
+  remoteBranch = magenta
+  tag = magenta
+  stash = cyan
+  HEAD = blue
+[color "interactive"]
+  prompt = red
+  header = red bold
+  error = red
+  help = black bold
+[color "grep"]
+  context = normal
+  match = cyan
+  filename = blue
+  function = blue
+  selected = normal
+  separator = red bold
+  linenumber = normal

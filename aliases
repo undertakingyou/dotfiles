@@ -13,3 +13,5 @@ alias djsync="python manage.py syncdb --migrate"
 alias pslog='sudo tail -F /var/log/postgresql/postgresql-9.1-main.log'
 alias psqlstart='sudo /etc/init.d/postgresql start'
 alias psqlstop='sudo /etc/init.d/postgresql stop'
+# Docker helpers
+alias dc='docker-compose'
