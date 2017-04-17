@@ -50,7 +50,7 @@ source $ZSH/oh-my-zsh.sh
 #
 source $HOME/.aliases
 
-export PATH=/usr/local/bin:$PATH:$HOME/.bin
+export PATH=/usr/local/bin:$PATH:$HOME/.bin:$HOME/.config/yarn/global/node_modules/.bin
 
 # Docker
 if [ -e .macdocker ]
@@ -70,3 +70,5 @@ export HOMEBREW_GITHUB_API_TOKEN=433dbae9bdcb46a3682d395c9fc80b7aac9cb183
 # octoeb tab completion
 source ~/Code/octoeb/completion.sh
 
+# Miniconda install
+export PATH="/Users/lucasroesler/miniconda3/bin:$PATH"
