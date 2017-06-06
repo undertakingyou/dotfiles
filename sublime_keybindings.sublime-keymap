@@ -1,0 +1,21 @@
+[
+    { "keys": ["super+0"], "command": "reset_font_size" },
+    { "keys": ["super+g+q"], "command": "wrap_lines_plus" },
+    {
+        "keys": ["g", "q"],
+        "command": "wrap_lines_plus",
+        "context":
+        [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "setting.is_widget", "operand": false }
+        ]
+    },
+    {
+        "keys": ["ctrl+w+h"],
+        "command": "prev_view"
+    },
+    {
+        "keys": ["ctrl+w+l"],
+        "command": "next_view"
+     },
+]
