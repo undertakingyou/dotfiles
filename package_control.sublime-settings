@@ -1,0 +1,39 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"AutoWrap",
+		"Babel",
+		"CSS Format",
+		"DocBlockr",
+		"Dockerfile Syntax Highlighting",
+		"FuzzyFileNav",
+		"Git",
+		"GitHub Flavored Markdown Preview",
+		"Google Spell Check",
+		"GoSublime",
+		"Handlebars",
+		"HTML-CSS-JS Prettify",
+		"Indent XML",
+		"JSX",
+		"KeyboardSpellCheck",
+		"MarkdownHighlighting",
+		"Monokai Extended",
+		"Package Control",
+		"Pretty JSON",
+		"Python 3",
+		"Python Improved",
+		"requirementstxt",
+		"SideBarEnhancements",
+		"Slate",
+		"SqlBeautifier",
+		"SublimeLinter-xmllint",
+		"Theme - Monokai Pro",
+		"TOML",
+		"Wrap Plus"
+	]
+}

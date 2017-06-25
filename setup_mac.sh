@@ -99,6 +99,7 @@ brew install docker
 brew install keybase
 brew install hugo
 brew install ssh-copy-id
+brew install golang
 
 echo "Cask installing apps"
 brew cask install iterm2
@@ -108,13 +109,20 @@ brew cask install caskroom/versions/google-chrome-beta
 brew cask install virtualbox
 brew cask install sublime-text
 
+echo "Install miniconda"
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+bash ~/miniconda.sh -b -p $HOME/miniconda3
+
 echo "Setup dotfiles"
 ln -s $(pwd)/aliases $HOME/.aliases
 ln -s $(pwd)/mac $HOME/.mac
 ln -s $(pwd)/slate $HOME/.slate
-ln -s $(pwd)/bashrc $HOME/.bashrc
+ln -sf $(pwd)/bashrc $HOME/.bashrc
 ln -s $(pwd)/zshrc $HOME/.zshrc
 ln -s $(pwd)/gitconfig $HOME/.gitconfig
+ln -s $(pwd)/package_control.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
 ln -s $(pwd)/user_settings.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 ln -s $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
 
+echo "Setup code folder"
+mkdir ~$HOME/Code

@@ -48,7 +48,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #
+if [ -e .aliases ]
+then
 source $HOME/.aliases
+fi
 
 export PATH=/usr/local/bin:$PATH:$HOME/.bin:$HOME/.config/yarn/global/node_modules/.bin
 
@@ -59,7 +62,7 @@ then
 fi
 
 # virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_REPSECT_VIRTUALENV=true
@@ -68,7 +71,7 @@ export PIP_REPSECT_VIRTUALENV=true
 export HOMEBREW_GITHUB_API_TOKEN=433dbae9bdcb46a3682d395c9fc80b7aac9cb183
 
 # octoeb tab completion
-source ~/Code/octoeb/completion.sh
+source $HOME/Code/octoeb/completion.sh
 
 # Miniconda install
-export PATH="$PATH:/Users/lucas.roesler/miniconda3/bin"
+export PATH="$PATH:$HOME/miniconda3/bin"
