@@ -87,6 +87,7 @@ brew install vim
 brew install git
 brew install node
 brew install npm
+brew install python
 brew install python3
 brew install curl
 brew install libevent
@@ -109,6 +110,9 @@ brew cask install mattr-slate
 brew cask install caskroom/versions/google-chrome-beta
 brew cask install virtualbox
 brew cask install sublime-text
+
+echo "Installing oh my zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "Install miniconda"
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
