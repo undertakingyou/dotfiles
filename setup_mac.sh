@@ -97,7 +97,6 @@ brew install git-open
 brew install git-extras
 brew install zsh
 brew install docker
-brew install keybase
 brew install hugo
 brew install ssh-copy-id
 brew install golang
@@ -105,6 +104,7 @@ brew install ruby
 
 echo "Cask installing apps"
 brew cask install iterm2
+brew cask install keybase
 brew cask install keepingyouawake
 brew cask install mattr-slate
 brew cask install caskroom/versions/google-chrome-beta
@@ -122,15 +122,19 @@ echo "Install gems"
 gem install mdless
 
 echo "Setup dotfiles"
-ln -s $(pwd)/aliases $HOME/.aliases
-ln -s $(pwd)/mac $HOME/.mac
-ln -s $(pwd)/slate $HOME/.slate
+ln -sf $(pwd)/aliases $HOME/.aliases
+ln -sf $(pwd)/mac $HOME/.mac
+ln -sf $(pwd)/slate $HOME/.slate
 ln -sf $(pwd)/bashrc $HOME/.bashrc
-ln -s $(pwd)/zshrc $HOME/.zshrc
-ln -s $(pwd)/gitconfig $HOME/.gitconfig
-ln -s $(pwd)/package_control.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
-ln -s $(pwd)/user_settings.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-ln -s $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
+ln -sf $(pwd)/zshrc $HOME/.zshrc
+ln -sf $(pwd)/gitconfig $HOME/.gitconfig
+ln -sf $(pwd)/gitmessage $HOME/.gitmessage
+ln -sf $(pwd)/package_control.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
+ln -sf $(pwd)/user_settings.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+ln -sf $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
 
 echo "Setup code folder"
-mkdir ~$HOME/Code
+mkdir $HOME/Code
+
+echo "Installing Inconsolata font"
+curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts/Inconsolata.otf

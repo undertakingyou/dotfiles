@@ -13,12 +13,11 @@
 		"Hefeweizen"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"font_face": "Inconsolata",
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Markdown"
 	],
 	"ignored_words":
 	[
