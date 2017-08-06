@@ -1,6 +1,0 @@
-export PATH=$PATH:/usr/local/sbin
-[[ -a $HOME/.aws_keys ]] && source $HOME/.aws_keys
-[[ -a $HOME/.marketing_login ]] && source $HOME/.marketing_login
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.6.13.0/libexec"
-export GOROOT=/usr/local/opt/go/libexec/bin

@@ -6,6 +6,8 @@ echo "General settings"
 sudo chflags hidden /Applications/maps.app
 sudo chflags hidden /Applications/game\ center.app
 sudo chflags hidden /Applications/photo \booth.app
+sudo chflags hidden /Applications/iBooks.app
+sudo chflags hidden /Applications/Siri.app
 
 printf "System - Reveal IP address, hostname, OS version, etc. when clicking the login window clock\n"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
@@ -17,6 +19,9 @@ sudo defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 printf "System - Avoid creating .DS_Store files on network volumes\n"
 sudo defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+printf "System - set clock to be desired format\n"
+sudo defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM H:mm:ss"
 
 printf "Keyboard - Turn off keyboard illumination when computer is not used for 5 minutes\n"
 sudo defaults write com.apple.BezelServices kDimTime -int 300
@@ -78,63 +83,81 @@ ruby -e "$(curl --location --fail --silent --show-error https://raw.githubuserco
 export PATH="/usr/local/bin:$PATH"
 
 echo "Brew installing apps"
-brew install automake
 brew install autoconf
+brew install automake
 brew install awscli
-brew install wget
-brew install neovim
-brew install vim
+brew install curl
+brew install docker
 brew install git
+brew install git-extras
+brew install git-open
+brew install gnupg2
+brew install golang
+brew install hugo
+brew install libevent
 brew install node
 brew install npm
+brew install openssl
 brew install python
 brew install python3
-brew install curl
-brew install libevent
-brew install openssl
 brew install readline
-brew install git-open
-brew install git-extras
-brew install zsh
-brew install docker
-brew install hugo
-brew install ssh-copy-id
-brew install golang
 brew install ruby
+brew install ssh-copy-id
+brew install vim
+brew install wget
+brew install zsh
+brew install pyenv-virtualenv
+brew install pyenv-virtualenvwrapper
 
 echo "Cask installing apps"
+brew cask install caskroom/versions/google-chrome-beta
+brew cask install evernote
+brew cask install gimp
+brew cask install inkscape
 brew cask install iterm2
 brew cask install keybase
-brew cask install keepingyouawake
-brew cask install mattr-slate
-brew cask install caskroom/versions/google-chrome-beta
-brew cask install virtualbox
-brew cask install sublime-text
+brew cask install macvim
+brew cask install qgis
+brew cask install spotify
+brew cask install dropbox
 
-echo "Installing oh my zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "Installing Powerline Fonts"
+brew cask install caskroom/fonts/font-anonymice-powerline
+brew cask install caskroom/fonts/font-monofur-for-powerline
+brew cask install caskroom/fonts/font-inconsolata-for-powerline
+brew cask install caskroom/fonts/font-menlo-for-powerline
+brew cask install caskroom/fonts/font-consolas-for-powerline
+brew cask install caskroom/fonts/font-meslo-for-powerline
+brew cask install caskroom/fonts/font-roboto-mono-for-powerline
+brew cask install caskroom/fonts/font-ubuntu-mono-derivative-powerline
+brew cask install caskroom/fonts/font-source-code-pro-for-powerline
+brew cask install caskroom/fonts/font-inconsolata-dz-for-powerline
+brew cask install caskroom/fonts/font-liberation-mono-for-powerline
+brew cask install caskroom/fonts/font-inconsolata-g-for-powerline
+brew cask install caskroom/fonts/font-fira-mono-for-powerline
+brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
+brew cask install caskroom/fonts/font-droid-sans-mono-for-powerline
 
-echo "Install miniconda"
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
-bash ~/miniconda.sh -b -p $HOME/miniconda3
+echo "Get my zshrc"
+git clone --recursive https://github.com/undertakingyou/dotzsh.git $HOME/.zsh
+chmod +x $HOME/.zsh/install.zsh; $HOME/.zsh/install.zsh
+chsh -s /bin/zsh
 
-echo "Install gems"
-gem install mdless
+echo "Get my vimrc"
+git clone http://github.com/undertakingyou/dotvim $HOME/.vim
+
+echo "Install Needed NPM tools"
+npm install --global prettier
+npm install --global eslint
+npm install --global babel-eslint
+npm install --global eslint-plugin-react
 
 echo "Setup dotfiles"
-ln -sf $(pwd)/aliases $HOME/.aliases
-ln -sf $(pwd)/mac $HOME/.mac
-ln -sf $(pwd)/slate $HOME/.slate
-ln -sf $(pwd)/bashrc $HOME/.bashrc
-ln -sf $(pwd)/zshrc $HOME/.zshrc
 ln -sf $(pwd)/gitconfig $HOME/.gitconfig
-ln -sf $(pwd)/gitmessage $HOME/.gitmessage
-ln -sf $(pwd)/package_control.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
-ln -sf $(pwd)/user_settings.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-ln -sf $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
+ln -sf $(pwd)/eslintrc $HOME/.eslintrc
 
 echo "Setup code folder"
-mkdir $HOME/Code
+mkdir $HOME/Projects
 
 echo "Installing Inconsolata font"
 curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts/Inconsolata.otf
